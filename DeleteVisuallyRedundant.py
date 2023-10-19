@@ -39,7 +39,7 @@ def deleteAllButLargestAndOldest(filepaths):
 			if('Whats' in filepath):
 				print("D:", filepath)
 				with open("deletes.txt", "a") as myfile:
-					myfile.write(filepath)
+					myfile.write(filepath + "\n")
 				if toDryRun == False:
 					os.remove(filepath)
 		
@@ -62,7 +62,7 @@ def deleteAllButLargestAndOldest(filepaths):
 				if('Whats' in filepath):
 					print("D:", filepath)
 					with open("deletes.txt", "a") as myfile:
-						myfile.write(filepath)
+						myfile.write(filepath + "\n")
 					if toDryRun == False:
 						os.remove(filepath)
 
@@ -70,7 +70,6 @@ def deleteAllButLargestAndOldest(filepaths):
 with open(dupsFile, 'r') as fp:
 	for cnt, line in enumerate(fp):
 		matches = re.findall("(?:(.*?(?:jpg|png|gif))[\s]{0,1})+?", line)
-		
 		deleteAllButLargestAndOldest(matches)
 
 if toRemoveDupFile:
